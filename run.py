@@ -21,7 +21,7 @@ def executa_calculo(time: str) -> None:
         print('<<ERRO!!!>>')
         print(f'<< formato incorreto! {time} >>\n\t<< Os minutos ou segundos devem estar abaixo de 60! >>')
     else:
-        click.echo(f'Tempo estudado: {time}')
+        print(f'Tempo estudado: {time}')
         execute_freetime_class(hours)
 
 
