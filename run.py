@@ -15,9 +15,14 @@ def executa_calculo(time: str) -> None:
     :param time: tempo de uma sessão de estudo.
     """
 
-    click.echo(f'Tempo estudado: {time}')
     hours = tuple([int(x) for x in time.split(':')])
-    execute_freetime_class(hours)
+
+    if (hours[1] > 59) or (hours[2] > 59):
+        print('<<ERRO!!!>>')
+        print(f'<< formato incorreto! {time} >>\n\t<< Os minutos ou segundos devem estar abaixo de 60! >>')
+    else:
+        click.echo(f'Tempo estudado: {time}')
+        execute_freetime_class(hours)
 
 
 if __name__ == '__main__':
