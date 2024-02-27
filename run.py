@@ -26,6 +26,7 @@ def executa_calculo(time: str) -> None:
 
 
 if __name__ == '__main__':
-    """ Linha de comando - python run.py 00:34:14"""
+    """Exemplo:
+            Linha de comando - python run.py 00:34:14"""
     os.system('cls')
     executa_calculo()
