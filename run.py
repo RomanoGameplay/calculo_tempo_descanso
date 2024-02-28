@@ -14,8 +14,9 @@ def execute_calculate(time: str) -> None:
 
     :param time: tempo de uma sessão de estudo.
     """
+
     if time.isdigit():
-        print(f'Tempo estudado: {time} minutos')
+        print(f'Tempo estudado: {time} ' + ('minuto' if int(time) <= 1 else 'minutos'))
         minutes = int(time)
         hour = minutes // 60
         minutes -= (hour * 60)
