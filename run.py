@@ -8,25 +8,33 @@ from execute import execute_freetime_class
     'time',
     type=click.STRING
 )
-def executa_calculo(time: str) -> None:
+def execute_calculate(time: str) -> None:
     """
     Executa o processo de cálculo do tempo de descanso.
 
     :param time: tempo de uma sessão de estudo.
     """
-
-    hours = tuple([int(x) for x in time.split(':')])
+    if time.isdigit():
+        print(f'Tempo estudado: {time} minutos')
+        minutes = int(time)
+        hour = minutes // 60
+        minutes -= (hour * 60)
+        hours = (hour, minutes, 0,)
+    else:
+        hours = tuple([int(x) for x in time.split(':')])
+        print(f'Tempo estudado: {time}')
 
     if (hours[1] > 59) or (hours[2] > 59):
         print('<<ERRO!!!>>')
         print(f'<< formato incorreto! {time} >>\n\t<< Os minutos ou segundos devem estar abaixo de 60! >>')
     else:
-        print(f'Tempo estudado: {time}')
         execute_freetime_class(hours)
 
 
 if __name__ == '__main__':
     """Exemplo:
-            Linha de comando - python run.py 00:34:14"""
+            Linha de comando - python run.py 00:34:14
+            ou
+            Linha de comando - python run.py 123"""
     os.system('cls')
-    executa_calculo()
+    execute_calculate()
