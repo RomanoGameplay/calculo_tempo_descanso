@@ -1,4 +1,5 @@
 from FreeTime import FreeTime
+from Cronometer import Cronometer
 
 
 def execute_freetime_class(hours: tuple) -> None:
@@ -8,5 +9,13 @@ def execute_freetime_class(hours: tuple) -> None:
     :param hours: Tupla representando tempo de estudo no formato (hora, minuto, segundo)
     """
 
-    freetime = FreeTime(hours=hours)
-    freetime.run()
+    FreeTime(hours=hours).run()
+
+
+def execute_cronometer() -> str:
+    """
+    Executa a classe Cronometer
+    """
+
+    cronometer = Cronometer().run()
+    return cronometer

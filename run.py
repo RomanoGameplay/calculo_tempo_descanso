@@ -1,14 +1,35 @@
 import os
 import click
-from execute import execute_freetime_class
+from execute import execute_freetime_class, execute_cronometer
 
 
-@click.command()
+@click.group()
+def time():
+    pass
+
+
+@time.command()
+def start_cronometer() -> None:
+    """
+    python run.py start-cronometer
+    Inicia o Cronômetro
+    """
+
+    cronometer = execute_cronometer()
+
+    try:
+        comando = f'python run.py calculate-freetime {cronometer}'
+        os.system(comando)
+    except Exception as e:
+        print(e)
+
+
+@time.command()
 @click.argument(
     'time',
     type=click.STRING
 )
-def execute_calculate(time: str) -> None:
+def calculate_freetime(time: str) -> None:
     """
     Executa o processo de cálculo do tempo de descanso.
 
@@ -21,6 +42,7 @@ def execute_calculate(time: str) -> None:
         hour = minutes // 60
         minutes -= (hour * 60)
         hours = (hour, minutes, 0,)
+        print('ou\nTempo estudado: {:02d}:{:02d}:00'.format(hour, minutes))
     else:
         hours = tuple([int(x) for x in time.split(':')])
         print(f'Tempo estudado: {time}')
@@ -34,8 +56,13 @@ def execute_calculate(time: str) -> None:
 
 if __name__ == '__main__':
     """Exemplo:
-            Linha de comando - python run.py 00:34:14
+        Cálculo do tempo de descanso:
+            -> Linha de comando - python run.py time calculate-freetime 00:34:14
             ou
-            Linha de comando - python run.py 123"""
+            -> Linha de comando - python run.py time calculate-freetime 123
+    
+        Início de contagem do cronômetro:
+            -> Linha de comando - python run.py start-cronometer       
+    """
     os.system('cls')
-    execute_calculate()
+    time()
