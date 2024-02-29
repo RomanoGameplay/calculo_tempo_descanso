@@ -33,10 +33,10 @@ class Cronometer:
         self.start_time = True
 
         while self.start_time:
-            if keyboard.is_pressed('space'):
+            if keyboard.is_pressed('ctrl+space'):
                 self.time_paused()
 
-            elif keyboard.is_pressed('q'):
+            elif keyboard.is_pressed('ctrl+q'):
                 break
 
             time.sleep(1)
@@ -61,10 +61,10 @@ class Cronometer:
         self.paused = True
 
         while self.paused:
-            if keyboard.is_pressed('space'):
+            if keyboard.is_pressed('ctrl+space'):
                 print('\n\tContinuando contagem do cronômetro...\n')
                 break
-            elif keyboard.is_pressed('q'):
+            elif keyboard.is_pressed('ctrl+q'):
                 self.start_time = False
                 break
             else:
@@ -79,6 +79,4 @@ class Cronometer:
 
         self.start()
         self.cronometer = '{:02d}:{:02d}:{:02d}'.format(self.hour, self.minute, self.second)
-        print(f'\n\t--> Tempo estudado: {self.cronometer}')
-        time.sleep(2.5)
         return self.cronometer

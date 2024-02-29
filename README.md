@@ -39,8 +39,8 @@ Tempo estudado: 123 minutos
 ```
 
 ---
-Outra funcionalidade existente é um cronômetro que pode ser pausado e despausado pressionando a tecla "space"
-Para encerrar a contagem do cronômetro basta pressionar a tecla "q". Após isso, o cálculo do tempo de descanso é feito 
+Outra funcionalidade existente é um cronômetro que pode ser pausado e despausado pressionando a tecla "ctrl+space"
+Para encerrar a contagem do cronômetro basta pressionar a tecla "ctrl+q". Após isso, o cálculo do tempo de descanso é feito 
 automaticamente, mostrando uma saída semelhante aos exemplos anteriores.
 
 Exemplo de uso da funcionalidade do cronômetro, via terminal:
@@ -53,20 +53,20 @@ Quando o comando é executado no terminal, aparece a mensagem:
 ```
         Cronômetro rodando...
 ```
-Caso queira pausar o cronômetro, basta pressionar a tecla "space" e o tempo do cronômetro será
-mostrado e caso queira recomeçar a contagem, basta clicar na tecla "space":
+Caso queira pausar o cronômetro, basta pressionar a tecla "ctrl+space" e o tempo do cronômetro será
+mostrado e caso queira recomeçar a contagem, basta clicar na tecla "ctrl+space" novamente:
 ```
-        Cronômetro Pausado... # mensagem é mostrada após pressionar "space"
+        Cronômetro Pausado... # mensagem é mostrada após pressionar "ctrl+space"
         00:01:36 # tempo corrido até a pausa do cronômetro
 
         Continuando contagem do cronômetro... # recomeça contagem do cronômetro
 ```
-E então, ao pressionar a tecla "q", o cálculo do tempo de descanso é feito a partir do tempo total 
+E então, ao pressionar a tecla "ctrl+q", o cálculo do tempo de descanso é feito a partir do tempo total 
 mostrado no cronômetro.
 
 OUTPUT
 ```
-        # Resultado após pressionar a tecla "q"
+        # Resultado após pressionar a tecla "ctrl+q"
 Tempo estudado: 00:06:24
         Se optar por usar 1/5 do tempo de estudo, então seu tempo de descanso será 00:01:17!
         Se optar por usar 1/3 do tempo de estudo, então seu tempo de descanso será 00:02:07!
