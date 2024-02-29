@@ -11,7 +11,6 @@ def time():
 @time.command()
 def start_cronometer() -> None:
     """
-    python run.py start-cronometer
     Inicia o Cronômetro
     """
 
