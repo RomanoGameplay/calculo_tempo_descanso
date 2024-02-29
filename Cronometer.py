@@ -62,7 +62,7 @@ class Cronometer:
 
         while self.paused:
             if keyboard.is_pressed('space'):
-                print('\n\tReiniciando cronômetro...\n')
+                print('\n\tContinuando contagem do cronômetro...\n')
                 break
             elif keyboard.is_pressed('q'):
                 self.start_time = False
