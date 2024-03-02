@@ -56,10 +56,10 @@ Quando o comando é executado no terminal, aparece a mensagem:
 Caso queira pausar o cronômetro, basta pressionar a tecla "ctrl+space" e o tempo do cronômetro será
 mostrado e caso queira recomeçar a contagem, basta clicar na tecla "ctrl+space" novamente:
 ```
-        Cronômetro Pausado... # mensagem é mostrada após pressionar "ctrl+space"
+        Cronômetro Pausado... # Mensagem é mostrada após pressionar "ctrl+space"
         00:01:36 # tempo corrido até a pausa do cronômetro
 
-        Continuando contagem do cronômetro... # recomeça contagem do cronômetro
+        Continuando contagem do cronômetro... # Recomeça contagem do cronômetro
 ```
 E então, ao pressionar a tecla "ctrl+q", o cálculo do tempo de descanso é feito a partir do tempo total 
 mostrado no cronômetro.
@@ -71,4 +71,40 @@ Tempo estudado: 00:06:24
         Se optar por usar 1/5 do tempo de estudo, então seu tempo de descanso será 00:01:17!
         Se optar por usar 1/3 do tempo de estudo, então seu tempo de descanso será 00:02:07!
         Caso queira estender o tempo até 1/3 do tempo, então adicione 00:00:50 ao tempo de descanso!
+```
+
+NOVA FUNCIONALIDADE:
+
+Agora, é possível usar o tempo de descanso calculado para iniciar um temporizador através do terminal,
+e ao final do temporizador será emitido um som contínuo de "Beep". Pressione "ctrl+q" para encerrar o som
+
+A inserção do tempo no temporizador não é manual, por isso, a entrada do tempo é idêntico ao comando para calcular 
+o tempo de descanso, ou seja, pode ser entradas do tipo HH:MM:SS ou inserindo apenas o número de minutos de descanso 
+("10", por exemplo). 
+
+Existe também a opção de pausar ou encerrar o temporizador usando os mesmos atalhos que no cronômetro
+, ou seja, por meio do "ctrl+space" para pausar e "ctrl+q" para encerrar a contagem.
+
+Exemplo de uso da funcionalidade do temporizador, via terminal:
+
+INPUT
+```
+python run.py start-temporizer 00:10:23
+```
+
+OUPUT
+```
+    Temporizador: 00:10:16 # O tempo vai diminuindo até chegar ao zero.
+
+```
+
+INPUT
+```
+python run.py start-temporizer 13
+```
+
+OUTPUT
+```
+    Temporizador: 00:12:42 # Acontece a mesma coisa que na saída do exemplo acima.
+
 ```

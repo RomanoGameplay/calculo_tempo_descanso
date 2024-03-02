@@ -1,11 +1,32 @@
 import os
 import click
-from src.Timer.execute import execute_freetime_class, execute_cronometer
+from src.Timer.execute import execute_freetime_class, execute_cronometer, execute_temporizer, execute_beep
+from src.info import transform_input_time
 
 
 @click.group()
 def time():
     pass
+
+
+@time.command()
+@click.argument(
+    'time',
+    type=click.STRING
+)
+def start_temporizer(time: str) -> None:
+    """
+    Inicia o Temporizador
+
+    :param time: Tempo de descanso
+    """
+
+    try:
+        hours = transform_input_time(time)
+        execute_temporizer(hours)
+        execute_beep()
+    except KeyboardInterrupt:
+        pass
 
 
 @time.command()
@@ -15,11 +36,8 @@ def start_cronometer() -> None:
     """
 
     cronometer = execute_cronometer()
-    try:
-        comando = f'python run.py calculate-freetime {cronometer}'
-        os.system(comando)
-    except Exception as e:
-        print(e)
+    comando = f'python run.py calculate-freetime {cronometer}'
+    os.system(comando)
 
 
 @time.command()
@@ -29,39 +47,33 @@ def start_cronometer() -> None:
 )
 def calculate_freetime(time: str) -> None:
     """
-    Executa o processo de cálculo do tempo de descanso.
+    Calcula o tempo de descanso.
 
     :param time: tempo de uma sessão de estudo.
     """
 
-    if time.isdigit():
-        print(f'Tempo estudado: {time} ' + ('minuto' if int(time) <= 1 else 'minutos'))
-        minutes = int(time)
-        hour = minutes // 60
-        minutes -= (hour * 60)
-        hours = (hour, minutes, 0,)
-        print('ou\nTempo estudado: {:02d}:{:02d}:00'.format(hour, minutes))
-    else:
-        hours = tuple([int(x) for x in time.split(':')])
-        print(f'Tempo estudado: {time}')
-
-    if (hours[1] > 59) or (hours[2] > 59):
-        print('<<ERRO!!!>>')
-        print(f'<< formato incorreto! {time} >>\n\t<< Os minutos ou segundos devem estar abaixo de 60! >>')
-    else:
+    try:
+        hours = transform_input_time(time)
         execute_freetime_class(hours)
+    except ValueError:
+        print(f'\tFormato inadequado: ({time})\n')
 
 
 if __name__ == '__main__':
     """
     Exemplo:
         Cálculo do tempo de descanso:
-            -> Linha de comando - python run.py time calculate-freetime 00:34:14
+            -> Linha de comando - python run.py calculate-freetime 00:34:14
             ou
-            -> Linha de comando - python run.py time calculate-freetime 123
+            -> Linha de comando - python run.py calculate-freetime 123
     
         Início de contagem do cronômetro:
-            -> Linha de comando - python run.py start-cronometer       
+            -> Linha de comando - python run.py start-cronometer
+        
+        Início de contagem do temporizador:
+            -> Linha de comando - python run.py start-temporizer 00:34:14
+            ou
+            -> Linha de comando - python run.py start-temporizer 123
     """
 
     os.system('cls')

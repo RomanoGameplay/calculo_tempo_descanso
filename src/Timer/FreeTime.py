@@ -8,6 +8,7 @@ class FreeTime:
 
     hours: tuple
     total_seconds: int
+    free_times: dict
 
     def __init__(self, hours: tuple) -> None:
         """
@@ -56,7 +57,6 @@ class FreeTime:
         minutes = int(freetime - (hours * 60))
         seconds = int(round(round(freetime - int(freetime), 2) * 60, 0))
         formatted_free_time = time(hour=hours, minute=minutes, second=seconds)
-
         return formatted_free_time
 
     def show_free_time(self, free_time_one_fifth: float, free_time_one_third: float) -> None:
@@ -67,13 +67,22 @@ class FreeTime:
         :param free_time_one_third: tempo de descanso (1/5 do tempo de estudo).
         """
 
+        self.free_times = {
+            'fifth': self.format_free_time(free_time_one_fifth),
+            'third': self.format_free_time(free_time_one_third),
+            'third_fifth': self.format_free_time(free_time_one_third - free_time_one_fifth)
+        }
+
         print(f'\tSe optar por usar 1/5 do tempo de estudo, então seu tempo de descanso será '
-              f'{self.format_free_time(free_time_one_fifth)}!')
+              f'{self.free_times["fifth"]}!')
         print(f'\tSe optar por usar 1/3 do tempo de estudo, então seu tempo de descanso será '
-              f'{self.format_free_time(free_time_one_third)}!')
+              f'{self.free_times["third"]}!')
         print(f'\tCaso queira estender o tempo até 1/3 do tempo, então adicione '
-              f'{self.format_free_time(free_time_one_third - free_time_one_fifth)}'
+              f'{self.free_times["third_fifth"]}'
               f' ao tempo de descanso!')
+
+    def get_free_times(self):
+        return self.free_times
 
     def run(self) -> None:
         """
