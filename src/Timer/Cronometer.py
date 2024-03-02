@@ -11,8 +11,9 @@ class Cronometer:
     minute: int
     hour: int
     start_time: bool
-    paused: bool
     cronometer: str
+    key_pause_cronometer: str
+    key_stop_cronometer: str
 
     def __init__(self) -> None:
         """
@@ -21,8 +22,9 @@ class Cronometer:
 
         self.second, self.minute, self.hour = 0, 0, 0
         self.start_time = False
-        self.paused = False
-        self.cronometer = ''
+        self.cronometer = '00:00:00'
+        self.key_pause_cronometer = 'ctrl+space'
+        self.key_stop_cronometer = 'ctrl+q'
 
     def start(self) -> None:
         """
@@ -33,10 +35,9 @@ class Cronometer:
         self.start_time = True
 
         while self.start_time:
-            if keyboard.is_pressed('ctrl+space'):
+            if keyboard.is_pressed(self.key_pause_cronometer):
                 self.time_paused()
-
-            elif keyboard.is_pressed('ctrl+q'):
+            elif keyboard.is_pressed(self.key_stop_cronometer):
                 break
 
             time.sleep(1)
@@ -58,25 +59,29 @@ class Cronometer:
         print('\t{:02d}:{:02d}:{:02d}'.format(self.hour, self.minute, self.second))
         time.sleep(2)
 
-        self.paused = True
-
-        while self.paused:
-            if keyboard.is_pressed('ctrl+space'):
+        while True:
+            if keyboard.is_pressed(self.key_pause_cronometer):
                 print('\n\tContinuando contagem do cronômetro...\n')
                 break
-            elif keyboard.is_pressed('ctrl+q'):
+            elif keyboard.is_pressed(self.key_stop_cronometer):
                 self.start_time = False
                 break
             else:
                 pass
 
-    def run(self) -> str:
+    def get_cronometer(self) -> str:
+        """
+        Entrega o valor do croômetro
+
+        :return: Tempo cronometrado
+        """
+
+        return self.cronometer
+
+    def run(self) -> None:
         """
         Roda o processo do Cronômetro
-
-        :return tempo cronometrado
         """
 
         self.start()
         self.cronometer = '{:02d}:{:02d}:{:02d}'.format(self.hour, self.minute, self.second)
-        return self.cronometer

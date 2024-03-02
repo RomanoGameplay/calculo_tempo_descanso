@@ -1,6 +1,6 @@
 import os
 import click
-from execute import execute_freetime_class, execute_cronometer
+from src.Timer.execute import execute_freetime_class, execute_cronometer
 
 
 @click.group()
@@ -11,11 +11,10 @@ def time():
 @time.command()
 def start_cronometer() -> None:
     """
-    Inicia o Cronômetro
+    Inicia contagem do cronômetro
     """
 
     cronometer = execute_cronometer()
-
     try:
         comando = f'python run.py calculate-freetime {cronometer}'
         os.system(comando)
@@ -54,7 +53,8 @@ def calculate_freetime(time: str) -> None:
 
 
 if __name__ == '__main__':
-    """Exemplo:
+    """
+    Exemplo:
         Cálculo do tempo de descanso:
             -> Linha de comando - python run.py time calculate-freetime 00:34:14
             ou
@@ -63,5 +63,6 @@ if __name__ == '__main__':
         Início de contagem do cronômetro:
             -> Linha de comando - python run.py start-cronometer       
     """
+
     os.system('cls')
     time()

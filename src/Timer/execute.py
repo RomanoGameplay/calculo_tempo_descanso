@@ -1,5 +1,5 @@
-from FreeTime import FreeTime
-from Cronometer import Cronometer
+from src.Timer.FreeTime import FreeTime
+from src.Timer.Cronometer import Cronometer
 
 
 def execute_freetime_class(hours: tuple) -> None:
@@ -15,7 +15,12 @@ def execute_freetime_class(hours: tuple) -> None:
 def execute_cronometer() -> str:
     """
     Executa a classe Cronometer
+
+    :return: Tempo cronometrado
     """
 
-    cronometer = Cronometer().run()
+    cronometer_obj = Cronometer()
+    cronometer_obj.run()
+    cronometer = cronometer_obj.get_cronometer()
+
     return cronometer
