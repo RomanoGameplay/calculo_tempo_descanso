@@ -3,5 +3,6 @@
 .xml
 .iml
 /__pycache__
+/src/Timer/__pycache__
 .pyc
 *.pyc
