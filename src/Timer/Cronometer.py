@@ -38,6 +38,8 @@ class Cronometer:
             if keyboard.is_pressed(self.key_pause_cronometer):
                 self.time_paused()
             elif keyboard.is_pressed(self.key_stop_cronometer):
+                print('\n\tEncerrando contagem...\n')
+                time.sleep(1)
                 break
 
             time.sleep(1)
@@ -64,6 +66,8 @@ class Cronometer:
                 print('\n\tContinuando contagem do cronômetro...\n')
                 break
             elif keyboard.is_pressed(self.key_stop_cronometer):
+                print('\n\tEncerrando contagem...\n')
+                time.sleep(1)
                 self.start_time = False
                 break
             else:
