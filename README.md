@@ -72,7 +72,7 @@ Tempo estudado: 00:06:24
         Se optar por usar 1/3 do tempo de estudo, então seu tempo de descanso será 00:02:07!
         Caso queira estender o tempo até 1/3 do tempo, então adicione 00:00:50 ao tempo de descanso!
 ```
-
+---
 NOVA FUNCIONALIDADE:
 
 Agora, é possível usar o tempo de descanso calculado para iniciar um temporizador através do terminal,
