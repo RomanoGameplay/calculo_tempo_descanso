@@ -16,7 +16,7 @@ def transform_input_time(time: str) -> tuple:
         minutes -= (hour * 60)
         hours = tuple([hour, minutes, 0])
         print(f'Tempo estudado: {time} ' + ('minuto' if int(time) <= 1 else 'minutos'),
-              end='ou tempo estudado: {:02d}:{:02d}:00'.format(hour, minutes))
+              end=' ou tempo estudado: {:02d}:{:02d}:00\n'.format(hour, minutes))
     else:
         try:
             hours = tuple([int(x) for x in time.split(':')])

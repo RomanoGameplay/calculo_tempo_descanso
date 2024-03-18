@@ -73,7 +73,7 @@ class FreeTime:
             'third_fifth': self.format_free_time(free_time_one_third - free_time_one_fifth)
         }
 
-        print(f'\tSe optar por usar 1/5 do tempo de estudo, então seu tempo de descanso será '
+        print(f'\n\tSe optar por usar 1/5 do tempo de estudo, então seu tempo de descanso será '
               f'{self.free_times["fifth"]}!')
         print(f'\tSe optar por usar 1/3 do tempo de estudo, então seu tempo de descanso será '
               f'{self.free_times["third"]}!')
